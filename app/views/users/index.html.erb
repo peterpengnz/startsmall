@@ -1,15 +1,13 @@
 <h1>Users</h1>
 
-<%= link_to "New user", new_user_path %>
+<%= link_to "New user", new_user_path if authenticated? %>
 
 <div id="users">
   <% @users.each do |user| %>
     <div>
       <a href="/users/<%= user.id %>">
-        <%= user.name %>
+        <%= user.email_address %>
       </a>
     </div>
   <% end %>
 </div>
-
-<%= debug @users %>

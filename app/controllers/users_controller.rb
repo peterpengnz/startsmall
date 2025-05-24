@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  allow_unauthenticated_access only: %i[ index show ]
+  
   before_action :set_user, only: %i[ show edit update destroy]
 
   def index
@@ -39,7 +41,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.expect(user: [ :name ])
+      params.expect(user: [ :email_address ])
     end
 
     def set_user
